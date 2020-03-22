@@ -72,7 +72,7 @@ static PyMethodDef binomialMethods[] = {
 static struct PyModuleDef binomialmodule = {
 					    PyModuleDef_HEAD_INIT,
 					    "binomial",
-					    "Python interface to gsl binomial functions with friendly interfaces",
+					    "Python interface to gsl binomial functions",
 					    -1,
 					    binomialMethods
 };

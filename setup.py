@@ -3,8 +3,8 @@ from distutils.core import setup, Extension
 
 def main():
     setup(name="pyegsl",
-          version="1.0",
-          description="Python easy interface to gsl with some friendly interfaces",
+          version="1.1",
+          description="Python easy interface to gsl",
           author="Heitor L. Werneck",
           author_email="heitorwerneck@hotmail.com",
           url='https://github.com/heitor57/pyegsl',

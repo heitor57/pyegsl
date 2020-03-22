@@ -1,4 +1,4 @@
 # PyEGsl
-ஃ Python easy interface to gsl with some friendly interfaces ஃ
+ஃ Python easy interface to gsl ஃ
 
 It's not a simply wrapper.
