@@ -64,7 +64,8 @@ binomialpmf(PyObject *self, PyObject *args){
 
 
 static PyMethodDef binomialMethods[] = {
-					{"binomialpmf", binomialpmf, METH_VARARGS, "Python interface for gsl_ran_binomial_pdf"},
+					{"binomialpmf", binomialpmf, METH_VARARGS, "(k=Tries,n=Total,p=Probability)\n\
+k and p can be a list"},
 					{NULL, NULL, 0, NULL}
 };
 
