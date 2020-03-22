@@ -14,7 +14,7 @@ binomialpmf(PyObject *self, PyObject *args){
     return NULL;
   if(PyNumber_Check(n)){
     if(PyNumber_Check(k) && PyNumber_Check(p))
-	res = PyFloat_FromDouble(gsl_ran_binomial_pdf(PyLong_AsLongLong(k),
+      res = PyFloat_FromDouble(gsl_ran_binomial_pdf(PyLong_AsLongLong(k),
 						    PyFloat_AsDouble(p),
 						    PyLong_AsLongLong(n)));
     else if(PySequence_Check(k) and PySequence_Check(p)){
