@@ -12,14 +12,14 @@ binomialpmf(PyObject *self, PyObject *args){
   PyObject *k, *n, *p, *res = NULL;
   if (!PyArg_ParseTuple(args, "OOO", &k,&n,&p))
     return NULL;
-  if(PyLong_Check(n)){
-    if(PyLong_Check(k) && PyFloat_Check(p))
+  if(PyNumber_Check(n)){
+    if(PyNumber_Check(k) && PyNumber_Check(p))
 	res = PyFloat_FromDouble(gsl_ran_binomial_pdf(PyLong_AsLongLong(k),
 						    PyFloat_AsDouble(p),
 						    PyLong_AsLongLong(n)));
-    else if(PyList_Check(k) and PyList_Check(p)){
-      p_num = PyList_Size(p);
-      k_num = PyList_Size(k);
+    else if(PySequence_Check(k) and PySequence_Check(p)){
+      p_num = PySequence_Size(p);
+      k_num = PySequence_Size(k);
       res = PyList_New(p_num);
       PyObject *sublist;
       for(i=0;i<p_num;i++){
@@ -27,29 +27,29 @@ binomialpmf(PyObject *self, PyObject *args){
 	PyList_SetItem(res, i, sublist);
 	for(j=0;j<k_num;j++){
 	  PyList_SetItem(sublist,j,
-			 PyFloat_FromDouble(gsl_ran_binomial_pdf(PyLong_AsLongLong(PyList_GetItem(k, j)),
-								 PyFloat_AsDouble(PyList_GetItem(p, i)),
+			 PyFloat_FromDouble(gsl_ran_binomial_pdf(PyLong_AsLongLong(PySequence_GetItem(k, j)),
+								 PyFloat_AsDouble(PySequence_GetItem(p, i)),
 								 PyLong_AsLongLong(n))));
 	}
       }
       
-    }else if(PyList_Check(k)){
-      k_num = PyList_Size(k);
+    }else if(PySequence_Check(k)){
+      k_num = PySequence_Size(k);
       res = PyList_New(k_num);
       for(i=0;i<k_num;i++){
 	PyList_SetItem(res,i,
-		       PyFloat_FromDouble(gsl_ran_binomial_pdf(PyLong_AsLongLong(PyList_GetItem(k,i)),
+		       PyFloat_FromDouble(gsl_ran_binomial_pdf(PyLong_AsLongLong(PySequence_GetItem(k,i)),
 							       PyFloat_AsDouble(p),
 							       PyLong_AsLongLong(n))));
       }
     }
-    else if(PyList_Check(p)){
-      p_num = PyList_Size(p);
+    else if(PySequence_Check(p)){
+      p_num = PySequence_Size(p);
       res = PyList_New(p_num);
       for(i=0;i<p_num;i++){
 	PyList_SetItem(res,i,
 		       PyFloat_FromDouble(gsl_ran_binomial_pdf(PyLong_AsLongLong(k),
-							       PyFloat_AsDouble(PyList_GetItem(p,i)),
+							       PyFloat_AsDouble(PySequence_GetItem(p,i)),
 							       PyLong_AsLongLong(n))));
       }
     }else{
