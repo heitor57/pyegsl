@@ -8,4 +8,4 @@ PyEGSL |pie|
 
 🚀 Python easy interface to GSL
 
-It's not a simply wrapper.
+It's not a simple wrapper.
